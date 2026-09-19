@@ -1,0 +1,29 @@
+# Per-tool configuration.
+#
+# `allowlist` is the set of tools that may be called at all.
+# `high_impact` is the set that always requires elevated scrutiny
+# (either REVIEW or BLOCK depending on risk and policy findings).
+
+policy_version: 1
+
+allowlist:
+  - read_email
+  - read_file
+  - query_database
+  - send_email
+  - delete_record
+
+high_impact:
+  - send_email
+  - delete_record
+
+# Tools that are always considered destructive regardless of arguments.
+destructive:
+  - delete_record
+
+# Tools that may write to any persistent store. None in the demo.
+write_tools: []
+
+# Tools that make network calls. None in the demo; a future http tool
+# must appear here to be authorized.
+network_tools: []

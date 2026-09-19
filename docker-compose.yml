@@ -1,0 +1,72 @@
+# Agent ICE local stack.
+#
+# Usage:
+#   docker compose up --build
+#
+# Ollama is exposed only on the compose network. It is NOT published to
+# the host by default. If you want to reach it from your host machine for
+# debugging, uncomment the ports section below (do NOT do this in
+# production or on an untrusted network).
+#
+# RECEIPT_SECRET is required. Set it in your shell before running compose:
+#   $env:RECEIPT_SECRET = "a-long-random-string-at-least-32-chars"
+
+services:
+  ollama:
+    image: ollama/ollama:latest
+    container_name: agent-ice-ollama
+    restart: unless-stopped
+    volumes:
+      - ollama_data:/root/.ollama
+    # ports:
+    #   - "127.0.0.1:11434:11434"
+    networks:
+      - ice-net
+    healthcheck:
+      test: ["CMD-SHELL", "ollama list || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 40s
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: agent-ice-backend
+    restart: unless-stopped
+    depends_on:
+      ollama:
+        condition: service_healthy
+    environment:
+      APP_ENV: production
+      API_HOST: 0.0.0.0
+      API_PORT: "8000"
+      LOG_LEVEL: INFO
+      OLLAMA_BASE_URL: http://ollama:11434
+      OLLAMA_MODEL: qwen2.5:7b
+      OLLAMA_TIMEOUT_SECONDS: "60"
+      OLLAMA_MAX_RETRIES: "2"
+      DATABASE_URL: sqlite:///./data/agent_ice.db
+      ICE_FAIL_CLOSED: "true"
+      DEEP_ANALYSIS_RISK_THRESHOLD: "40"
+      RECEIPT_SECRET: ${RECEIPT_SECRET:?RECEIPT_SECRET must be set in the environment}
+      RECEIPT_TTL_SECONDS: "30"
+      FRONTEND_ORIGIN: http://localhost:5173
+      POLICIES_DIR: policies
+    ports:
+      - "127.0.0.1:8000:8000"
+    volumes:
+      - ice_db:/app/data
+      - ice_logs:/app/logs
+    networks:
+      - ice-net
+
+volumes:
+  ollama_data:
+  ice_db:
+  ice_logs:
+
+networks:
+  ice-net:
+    driver: bridge

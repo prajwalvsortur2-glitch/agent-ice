@@ -1,0 +1,32 @@
+{
+  "records": [
+    {
+      "id": "rec_1001",
+      "owner": "cust_0001",
+      "kind": "contract",
+      "status": "active",
+      "notes": "Renewal due Q3."
+    },
+    {
+      "id": "rec_1002",
+      "owner": "cust_0002",
+      "kind": "invoice",
+      "status": "paid",
+      "notes": "Paid in full."
+    },
+    {
+      "id": "rec_1003",
+      "owner": "cust_0003",
+      "kind": "ticket",
+      "status": "open",
+      "notes": "Awaiting customer response."
+    },
+    {
+      "id": "rec_1004",
+      "owner": "cust_0004",
+      "kind": "contract",
+      "status": "active",
+      "notes": "Enterprise agreement."
+    }
+  ]
+}

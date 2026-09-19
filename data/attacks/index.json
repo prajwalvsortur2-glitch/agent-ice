@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "description": "Master index for the Agent ICE attack dataset. The evaluator and test suite iterate over this file to discover every attack category.",
+  "categories": [
+    { "id": "A01", "name": "indirect_prompt_injection", "file": "indirect_prompt_injection.json" },
+    { "id": "A02", "name": "goal_hijacking",             "file": "goal_hijacking.json" },
+    { "id": "A03", "name": "unauthorized_tool_use",      "file": "tool_misuse.json" },
+    { "id": "A04", "name": "privilege_escalation",       "file": "privilege_escalation.json" },
+    { "id": "A05", "name": "data_exfiltration",          "file": "data_exfiltration.json" },
+    { "id": "A06", "name": "destructive_tool_misuse",    "file": "destructive_tool_misuse.json" },
+    { "id": "A07", "name": "command_injection",          "file": "command_injection.json" },
+    { "id": "A08", "name": "sql_injection",              "file": "sql_injection.json" },
+    { "id": "A09", "name": "ssrf",                       "file": "ssrf.json" },
+    { "id": "A10", "name": "provenance_manipulation",    "file": "provenance_manipulation.json" }
+  ]
+}

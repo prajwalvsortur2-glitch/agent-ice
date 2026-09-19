@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-base text-ink font-sans antialiased;
+    background-image:
+      radial-gradient(1200px 600px at 15% -10%, rgba(34, 211, 238, 0.06), transparent 60%),
+      radial-gradient(900px 500px at 90% 0%, rgba(99, 102, 241, 0.05), transparent 60%);
+    background-attachment: fixed;
+  }
+
+  * {
+    @apply border-line;
+  }
+
+  ::selection {
+    background: rgba(34, 211, 238, 0.28);
+    color: #eaf2fb;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #1f2a44;
+    border-radius: 8px;
+    border: 2px solid #0a0e1a;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #2a3860;
+  }
+}
+
+@layer components {
+  .panel {
+    @apply rounded-xl border border-line bg-base-panel shadow-panel;
+  }
+
+  .panel-inset {
+    @apply rounded-lg border border-line-soft bg-base-inset;
+  }
+
+  .panel-header {
+    @apply flex items-center justify-between gap-3 border-b border-line px-4 py-3;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border border-line
+           px-3.5 py-2 text-sm font-medium text-ink transition
+           hover:border-line-strong hover:bg-base-elevated
+           focus:outline-none focus:ring-2 focus:ring-accent/40
+           disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .btn-primary {
+    @apply border-accent/40 bg-accent/10 text-accent hover:bg-accent/20 hover:border-accent/60;
+  }
+
+  .btn-danger {
+    @apply border-decision-block/40 bg-decision-block/10 text-decision-block
+           hover:bg-decision-block/20 hover:border-decision-block/60;
+  }
+
+  .btn-ghost {
+    @apply border-transparent bg-transparent text-ink-secondary hover:bg-base-elevated hover:text-ink;
+  }
+
+  .btn-sm {
+    @apply px-2.5 py-1.5 text-xs;
+  }
+
+  .input {
+    @apply w-full rounded-lg border border-line bg-base-inset px-3 py-2
+           font-mono text-sm text-ink placeholder:text-ink-faint
+           focus:border-accent/50 focus:outline-none focus:ring-2 focus:ring-accent/30;
+  }
+
+  .label {
+    @apply mb-1.5 block text-xs font-medium uppercase tracking-wider text-ink-secondary;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-md border px-2 py-0.5
+           font-mono text-[11px] font-medium uppercase tracking-wide;
+  }
+}
+
+@layer utilities {
+  .grid-lines {
+    background-image:
+      linear-gradient(rgba(31, 42, 68, 0.35) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(31, 42, 68, 0.35) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+}

@@ -1,0 +1,35 @@
+# Risk scoring thresholds and signal weights.
+#
+# `thresholds` map a 0..100 score to a RiskLevel:
+#   score <= low_max       → LOW
+#   score <= medium_max    → MEDIUM
+#   score <= high_max      → HIGH
+#   otherwise              → CRITICAL
+#
+# `weights` are additive contributions from individual signals. They are
+# configurable and intentionally documented rather than buried in code.
+# They are NOT claimed to be scientifically universal.
+
+policy_version: 1
+
+thresholds:
+  low_max: 24
+  medium_max: 49
+  high_max: 79
+
+weights:
+  intent_mismatch_low: 15
+  intent_mismatch_high: 35
+  untrusted_provenance: 25
+  restricted_provenance: 5
+  sensitive_resource: 15
+  external_destination: 25
+  high_impact_operation: 20
+  destructive_operation: 30
+  irreversible_operation: 20
+  credential_access: 30
+  policy_violation: 20
+  path_traversal: 40
+  sql_injection: 40
+  command_injection: 40
+  ssrf: 40

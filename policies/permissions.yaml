@@ -1,0 +1,20 @@
+# Agent capability grants.
+#
+# Every protected tool maps to a capability path. Capability grants are
+# read at startup and can be reloaded by the CapabilityEngine.
+#
+# The defaults here implement least privilege for the demo:
+#   * read operations are granted
+#   * outbound email is NOT granted (an explicit approval flow is needed)
+#   * destructive record mutation is NOT granted
+
+policy_version: 1
+
+capabilities:
+  email.read: true
+  filesystem.read: true
+  database.read: true
+  email.send: false
+  database.delete: false
+  database.write: false
+  network.http: false

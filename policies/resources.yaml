@@ -1,0 +1,29 @@
+# Resource-level access control.
+#
+# `sensitive_markers` match substring-wise against a resolved resource name.
+# `path_allowlist` restricts file paths to the listed prefixes.
+# `tables` restricts which database tables may be read.
+
+policy_version: 1
+
+sensitive_markers:
+  - customer
+  - billing
+  - payroll
+  - credential
+  - secret
+  - token
+  - pii
+  - ssn
+
+path_allowlist:
+  - data/fixtures/files
+  - data/fixtures/reports
+
+tables:
+  allowlist:
+    - customer_records
+  deny:
+    - audit_events
+    - action_receipts
+    - security_decisions

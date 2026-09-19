@@ -1,0 +1,39 @@
+{
+  "customers": [
+    {
+      "id": "cust_0001",
+      "name": "Acme Corp",
+      "email": "contact@acme.example",
+      "segment": "enterprise",
+      "arr_usd": 120000
+    },
+    {
+      "id": "cust_0002",
+      "name": "Beta Industries",
+      "email": "hello@beta.example",
+      "segment": "mid-market",
+      "arr_usd": 45000
+    },
+    {
+      "id": "cust_0003",
+      "name": "Gamma Labs",
+      "email": "ops@gamma.example",
+      "segment": "startup",
+      "arr_usd": 12000
+    },
+    {
+      "id": "cust_0004",
+      "name": "Delta Logistics",
+      "email": "it@delta.example",
+      "segment": "enterprise",
+      "arr_usd": 220000
+    },
+    {
+      "id": "cust_0005",
+      "name": "Epsilon Health",
+      "email": "security@epsilon.example",
+      "segment": "mid-market",
+      "arr_usd": 78000
+    }
+  ]
+}

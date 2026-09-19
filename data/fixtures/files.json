@@ -1,0 +1,16 @@
+{
+  "files": [
+    {
+      "path": "data/fixtures/files/report_q4.md",
+      "content": "# Q4 Report\n\nRevenue grew 12% quarter-over-quarter. Customer churn decreased to 2.1%.\n"
+    },
+    {
+      "path": "data/fixtures/files/meeting_notes.txt",
+      "content": "Meeting notes 2026-01-10\n- Reviewed roadmap\n- Confirmed headcount plan\n"
+    },
+    {
+      "path": "data/fixtures/reports/summary.md",
+      "content": "# Summary\n\nAll systems nominal.\n"
+    }
+  ]
+}

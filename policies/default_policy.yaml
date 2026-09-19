@@ -1,0 +1,53 @@
+# Agent ICE default policy.
+#
+# This file is loaded by the PolicyEngine at startup. It defines the
+# baseline behavior for the demo. Values here are conservative on purpose:
+# it is safer to require an explicit policy edit than to relax defaults
+# at runtime.
+
+policy_version: 1
+
+meta:
+  description: "Default policy for Agent ICE demo."
+  owner: "security-team"
+
+# The `tools` section is also mirrored in tools.yaml for per-tool settings;
+# the engine merges both. Values here are the fallback if tools.yaml is
+# missing.
+tools:
+  allowlist:
+    - read_email
+    - read_file
+    - query_database
+    - send_email
+    - delete_record
+  high_impact:
+    - send_email
+    - delete_record
+
+resources:
+  sensitive_markers:
+    - customer
+    - billing
+    - payroll
+    - credential
+    - secret
+    - token
+  path_allowlist:
+    - data/fixtures/files
+    - data/fixtures/reports
+
+network:
+  domain_allowlist:
+    - company.local
+    - internal.company.local
+
+email:
+  internal_domains:
+    - company.local
+
+risk:
+  thresholds:
+    low_max: 24
+    medium_max: 49
+    high_max: 79
